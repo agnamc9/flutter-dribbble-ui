@@ -12,7 +12,8 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-
+  curved_navigation_bar: ^1.0.3
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -27,4 +28,5 @@ flutter:
 
   assets:
     - assets/pet_adoption/images/
+    - assets/e_commerce/images/
   #   - images/a_dot_ham.jpeg

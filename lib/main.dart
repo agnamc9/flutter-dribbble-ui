@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dribbble_ui/pet_adoption/pages/pages.dart';
-import 'package:flutter_dribbble_ui/pet_adoption/pages/pet_page.dart';
+import 'package:flutter_dribbble_ui/e_commerce/e_commerce.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: PetsPage(),
+      home: HomePage(),
     );
   }
 }
