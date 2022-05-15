@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dribbble_ui/e_commerce/e_commerce.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -295,16 +296,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.grey.shade100,
-        index: 1,
-        items: const [
-          Icon(Icons.compare_arrows, size: 30),
-          Icon(Icons.sports_basketball, size: 30),
-          Icon(Icons.add, size: 30),
-        ],
-        onTap: (index) {},
-      ),
+      bottomNavigationBar: BottomBarView(),
     );
   }
 }
