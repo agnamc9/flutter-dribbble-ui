@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dribbble_ui/e_commerce/e_commerce.dart';
+import 'package:flutter_dribbble_ui/food_delivery/food_delivery.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: MealPage(),
     );
   }
 }

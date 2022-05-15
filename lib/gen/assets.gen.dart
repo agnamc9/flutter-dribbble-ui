@@ -7,10 +7,64 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsECommerceGen {
+  const $AssetsECommerceGen();
+
+  $AssetsECommerceImagesGen get images => const $AssetsECommerceImagesGen();
+}
+
 class $AssetsPetAdoptionGen {
   const $AssetsPetAdoptionGen();
 
   $AssetsPetAdoptionImagesGen get images => const $AssetsPetAdoptionImagesGen();
+}
+
+class $AssetsECommerceImagesGen {
+  const $AssetsECommerceImagesGen();
+
+  /// File path: assets/e_commerce/images/flame.png
+  AssetGenImage get flame =>
+      const AssetGenImage('assets/e_commerce/images/flame.png');
+
+  /// File path: assets/e_commerce/images/intro.jpg
+  AssetGenImage get intro =>
+      const AssetGenImage('assets/e_commerce/images/intro.jpg');
+
+  /// File path: assets/e_commerce/images/item1.jpg
+  AssetGenImage get item1 =>
+      const AssetGenImage('assets/e_commerce/images/item1.jpg');
+
+  /// File path: assets/e_commerce/images/p1_item_1.jpg
+  AssetGenImage get p1Item1 =>
+      const AssetGenImage('assets/e_commerce/images/p1_item_1.jpg');
+
+  /// File path: assets/e_commerce/images/p1_item_2.jpg
+  AssetGenImage get p1Item2 =>
+      const AssetGenImage('assets/e_commerce/images/p1_item_2.jpg');
+
+  /// File path: assets/e_commerce/images/p1_item_3.jpg
+  AssetGenImage get p1Item3 =>
+      const AssetGenImage('assets/e_commerce/images/p1_item_3.jpg');
+
+  /// File path: assets/e_commerce/images/p1_item_header_1.jpg
+  AssetGenImage get p1ItemHeader1 =>
+      const AssetGenImage('assets/e_commerce/images/p1_item_header_1.jpg');
+
+  /// File path: assets/e_commerce/images/p1_item_header_2.jpg
+  AssetGenImage get p1ItemHeader2 =>
+      const AssetGenImage('assets/e_commerce/images/p1_item_header_2.jpg');
+
+  /// File path: assets/e_commerce/images/p2_header.jpg
+  AssetGenImage get p2Header =>
+      const AssetGenImage('assets/e_commerce/images/p2_header.jpg');
+
+  /// File path: assets/e_commerce/images/p2_item_header_1.jpg
+  AssetGenImage get p2ItemHeader1 =>
+      const AssetGenImage('assets/e_commerce/images/p2_item_header_1.jpg');
+
+  /// File path: assets/e_commerce/images/p2_item_header_2.jpg
+  AssetGenImage get p2ItemHeader2 =>
+      const AssetGenImage('assets/e_commerce/images/p2_item_header_2.jpg');
 }
 
 class $AssetsPetAdoptionImagesGen {
@@ -40,6 +94,7 @@ class $AssetsPetAdoptionImagesGen {
 class Assets {
   Assets._();
 
+  static const $AssetsECommerceGen eCommerce = $AssetsECommerceGen();
   static const $AssetsPetAdoptionGen petAdoption = $AssetsPetAdoptionGen();
 }
 

@@ -1,6 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dribbble_ui/e_commerce/e_commerce.dart';
+import 'package:flutter_dribbble_ui/gen/assets.gen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,6 +10,30 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<AssetGenImage> headerItems = [
+    Assets.eCommerce.images.p1ItemHeader1,
+    Assets.eCommerce.images.p1ItemHeader2,
+  ];
+
+  List<AssetGenImage> items = [
+    Assets.eCommerce.images.p1Item1,
+    Assets.eCommerce.images.p1Item2,
+    Assets.eCommerce.images.p1Item3,
+  ];
+
+  List<String> itemNames = [
+    "Ipad pro 2015",
+    "Smart TV 32''",
+    "Keyboard",
+  ];
+
+  List<String> categories = [
+    "Clothing",
+    "Gadget",
+    "Gaming",
+    "Fashion",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,8 +48,30 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Row(
-                    children: const [
-                      Icon(Icons.menu),
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 26,
+                            height: 4,
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(35, 51, 80, 1),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          Container(
+                            width: 20,
+                            height: 4,
+                            decoration: BoxDecoration(
+                              //color: Colors.blue,
+                              color: Color.fromRGBO(123, 146, 185, 1),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ],
+                      ),
                       SizedBox(width: 20),
                       Expanded(
                         child: Text(
@@ -36,50 +82,74 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                      Icon(Icons.notifications_none)
+                      Stack(
+                        children: [
+                          Icon(
+                            Icons.notifications_none,
+                            size: 30,
+                          ),
+                          Positioned(
+                            right: 6,
+                            top: 6,
+                            child: Container(
+                              width: 8,
+                              height: 8,
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          )
+                        ],
+                      )
                     ],
                   ),
                   const SizedBox(height: 20),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16)),
-                          child: const TextField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              prefixIcon: Icon(Icons.search),
-                              hintText: "Search",
-                              isDense: true,
-                              contentPadding: EdgeInsets.zero,
+                  SizedBox(
+                    height: 50,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(16)),
+                            child: const TextField(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                prefixIcon: Icon(Icons.search),
+                                hintText: "Search..",
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(width: 20),
-                      Container(
-                        decoration: BoxDecoration(
+                        const SizedBox(width: 20),
+                        Container(
+                          decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(16)),
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 18, horizontal: 36),
-                        child: const Icon(Icons.settings),
-                      ),
-                    ],
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          child: const Icon(Icons.settings),
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 20),
                   SizedBox(
                     height: 200,
                     child: ListView.builder(
-                      itemCount: 2,
+                      itemCount: headerItems.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Container(
                           width: 300,
                           decoration: BoxDecoration(
-                            color: Colors.blue,
+                            image: DecorationImage(
+                              image: headerItems[index],
+                              fit: BoxFit.cover,
+                            ),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           margin: const EdgeInsets.only(
@@ -91,26 +161,30 @@ class _HomePageState extends State<HomePage> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Expanded(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
-                                    Text(
-                                      'Discount',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 16),
-                                    ),
-                                    SizedBox(height: 10),
-                                    Text(
-                                      '70%',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 36,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                child: index % 2 == 0
+                                    ? Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: const [
+                                          Text(
+                                            'Discount',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 16),
+                                          ),
+                                          SizedBox(height: 10),
+                                          Text(
+                                            '70%',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 36,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    : Container(),
                               ),
                               const Text(
                                 '#Gadgetdays',
@@ -157,7 +231,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 20),
                   Row(
-                    children: const [
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
                       Text(
                         'Live Discount',
                         style: TextStyle(
@@ -165,6 +240,8 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 20,
                         ),
                       ),
+                      SizedBox(width: 5),
+                      Assets.eCommerce.images.flame.image(width: 30),
                       Spacer(),
                       Text(
                         'View All',
@@ -180,7 +257,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     height: 45,
                     child: ListView.builder(
-                      itemCount: 5,
+                      itemCount: categories.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Container(
@@ -195,7 +272,7 @@ class _HomePageState extends State<HomePage> {
                               vertical: 8, horizontal: 16),
                           alignment: Alignment.center,
                           child: Text(
-                            'Gadget',
+                            categories[index],
                             style: TextStyle(
                               fontSize: 18,
                               color: index == 1 ? Colors.white : Colors.black,
@@ -209,7 +286,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     height: 250,
                     child: ListView.builder(
-                      itemCount: 4,
+                      itemCount: items.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Padding(
@@ -231,7 +308,10 @@ class _HomePageState extends State<HomePage> {
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20),
-                                            color: Colors.blue,
+                                            image: DecorationImage(
+                                              image: items[index],
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
                                         Positioned(
@@ -272,11 +352,11 @@ class _HomePageState extends State<HomePage> {
                                       ],
                                     ),
                                   ),
-                                  const Padding(
-                                    padding: EdgeInsets.all(20.0),
+                                  Padding(
+                                    padding: const EdgeInsets.all(20.0),
                                     child: Text(
-                                      'IPad pro 2015',
-                                      style: TextStyle(
+                                      itemNames[index],
+                                      style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
                                       ),
