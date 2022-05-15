@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dribbble_ui/gen/assets.gen.dart';
 
 class SectionPage extends StatefulWidget {
   const SectionPage({Key? key}) : super(key: key);
@@ -8,6 +9,30 @@ class SectionPage extends StatefulWidget {
 }
 
 class _SectionPageState extends State<SectionPage> {
+  List<AssetGenImage> headerItems = [
+    Assets.eCommerce.images.p2ItemHeader1,
+    Assets.eCommerce.images.p2ItemHeader2,
+  ];
+
+  List<AssetGenImage> items = [
+    Assets.eCommerce.images.p1Item1,
+    Assets.eCommerce.images.p1Item2,
+    Assets.eCommerce.images.p1Item3,
+  ];
+
+  List<String> itemNames = [
+    "Ipad pro 2015",
+    "Smart TV 32''",
+    "Keyboard",
+  ];
+
+  List<String> categories = [
+    "Clothing",
+    "Gadget",
+    "Gaming",
+    "Fashion",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,28 +49,28 @@ class _SectionPageState extends State<SectionPage> {
                   const SizedBox(width: 20),
                   Expanded(
                     child: Container(
-                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16)),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16)),
                       child: const TextField(
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           prefixIcon: Icon(Icons.search),
                           hintText: "Search in gadget..",
-                          isDense: true,
-                          contentPadding: EdgeInsets.zero,
                         ),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
                   height: 240,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("assets/e_commerce/item2.jpg"),
+                      image: Assets.eCommerce.images.p2Header,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -125,13 +150,16 @@ class _SectionPageState extends State<SectionPage> {
               SizedBox(
                 height: 160,
                 child: ListView.builder(
-                  itemCount: 2,
+                  itemCount: headerItems.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return Container(
                       width: 260,
                       decoration: BoxDecoration(
-                        color: Colors.blue,
+                        image: DecorationImage(
+                          image: headerItems[index],
+                          fit: BoxFit.cover,
+                        ),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       margin: const EdgeInsets.only(
@@ -142,29 +170,27 @@ class _SectionPageState extends State<SectionPage> {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Expanded(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
-                                  'Discount',
-                                  style: TextStyle(color: Colors.white, fontSize: 16),
-                                ),
-                                SizedBox(height: 10),
-                                Text(
-                                  '70%',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 36,
-                                    fontWeight: FontWeight.bold,
+                          if (index % 2 == 0)
+                            Expanded(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    'Release\nSoon',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
+                                ],
+                              ),
+                            )
+                          else
+                            Spacer(),
                           const Text(
-                            '#Gadgetdays',
+                            '22 Dec 2021',
                             style: TextStyle(color: Colors.white, fontSize: 16),
                           ),
                         ],
@@ -230,7 +256,7 @@ class _SectionPageState extends State<SectionPage> {
               SizedBox(
                 height: 45,
                 child: ListView.builder(
-                  itemCount: 5,
+                  itemCount: categories.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return Container(
@@ -241,10 +267,11 @@ class _SectionPageState extends State<SectionPage> {
                       margin: const EdgeInsets.only(
                         right: 16,
                       ),
-                      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 16),
                       alignment: Alignment.center,
                       child: Text(
-                        'Gadget',
+                        categories[index],
                         style: TextStyle(
                           fontSize: 18,
                           color: index == 1 ? Colors.white : Colors.black,
@@ -258,7 +285,7 @@ class _SectionPageState extends State<SectionPage> {
               SizedBox(
                 height: 120,
                 child: ListView.builder(
-                  itemCount: 4,
+                  itemCount: itemNames.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return Padding(
@@ -267,6 +294,7 @@ class _SectionPageState extends State<SectionPage> {
                         width: 300,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
                         ),
                         padding: const EdgeInsets.all(8),
                         child: Row(
@@ -274,7 +302,10 @@ class _SectionPageState extends State<SectionPage> {
                             Container(
                               width: 100,
                               decoration: BoxDecoration(
-                                color: Colors.blue,
+                                image: DecorationImage(
+                                  image: items[index],
+                                  fit: BoxFit.cover,
+                                ),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                             ),
@@ -283,21 +314,24 @@ class _SectionPageState extends State<SectionPage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Expanded(
+                                  Expanded(
                                     child: Text(
-                                      'Ipad pro 2015\nOriginal',
-                                      style: TextStyle(
+                                      itemNames[index],
+                                      style: const TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
                                       ),
+                                      maxLines: 2,
                                     ),
                                   ),
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: const [
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
                                       Text(
                                         'Price',
-                                        style: TextStyle(color: Colors.grey, fontSize: 16),
+                                        style: TextStyle(
+                                            color: Colors.grey, fontSize: 16),
                                       ),
                                       Text(
                                         "\$400",

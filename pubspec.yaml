@@ -29,4 +29,5 @@ flutter:
   assets:
     - assets/pet_adoption/images/
     - assets/e_commerce/images/
+    - assets/food_delivery/images/
   #   - images/a_dot_ham.jpeg
