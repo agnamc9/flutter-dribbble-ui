@@ -220,12 +220,12 @@ class _HomePageState extends State<HomePage> {
                                     Container(
                                       width: 90,
                                       height: 90,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.blue,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     const Text(
@@ -310,7 +310,7 @@ class _HomePageState extends State<HomePage> {
                   topRight: Radius.circular(10),
                 ),
               ),
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
