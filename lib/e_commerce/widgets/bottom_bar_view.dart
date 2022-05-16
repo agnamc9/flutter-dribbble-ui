@@ -6,143 +6,75 @@ class BottomBarView extends StatefulWidget {
   _BottomBarViewState createState() => _BottomBarViewState();
 }
 
-class _BottomBarViewState extends State<BottomBarView>
-    with TickerProviderStateMixin {
-  AnimationController? animationController;
-
-  @override
-  void initState() {
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1000),
-    );
-    animationController?.forward();
-    super.initState();
-  }
-
+class _BottomBarViewState extends State<BottomBarView> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100,
+      height: 120,
       child: Stack(
-        alignment: AlignmentDirectional.bottomCenter,
         children: <Widget>[
-          AnimatedBuilder(
-            animation: animationController!,
-            builder: (BuildContext context, Widget? child) {
-              return Transform(
-                transform: Matrix4.translationValues(0.0, 0.0, 0.0),
-                child: PhysicalShape(
-                  color: Colors.white,
-                  elevation: 16.0,
-                  clipper: TabClipper(
-                      radius: Tween<double>(begin: 0.0, end: 1.0)
-                              .animate(
-                                CurvedAnimation(
-                                    parent: animationController!,
-                                    curve: Curves.fastOutSlowIn),
-                              )
-                              .value *
-                          38.0),
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 62,
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.only(left: 8, right: 8, top: 4),
-                          child: Row(
-                            children: <Widget>[
-                              const Expanded(
-                                child: Icon(Icons.home),
-                              ),
-                              const Expanded(
-                                child: Icon(Icons.home),
-                              ),
-                              SizedBox(
-                                width: Tween<double>(begin: 0.0, end: 1.0)
-                                        .animate(CurvedAnimation(
-                                            parent: animationController!,
-                                            curve: Curves.fastOutSlowIn))
-                                        .value *
-                                    64.0,
-                              ),
-                              const Expanded(
-                                child: Icon(Icons.home),
-                              ),
-                              const Expanded(
-                                child: Icon(Icons.home),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).padding.bottom,
-                      )
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
-          Padding(
-            padding:
-                EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
-            child: SizedBox(
-              width: 38 * 2.0,
-              height: 38 + 62.0,
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: ClipPath(
+              clipper: TabClipper(),
               child: Container(
-                alignment: Alignment.topCenter,
-                color: Colors.transparent,
-                child: SizedBox(
-                  width: 38 * 2.0,
-                  height: 38 * 2.0,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ScaleTransition(
-                      alignment: Alignment.center,
-                      scale: Tween<double>(begin: 0.0, end: 1.0).animate(
-                          CurvedAnimation(
-                              parent: animationController!,
-                              curve: Curves.fastOutSlowIn)),
-                      child: Container(
-                        // alignment: Alignment.center,s
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          gradient: LinearGradient(
-                              colors: [
-                                Colors.blue,
-                                Color(0xff6A88E5),
-                              ],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight),
-                          shape: BoxShape.circle,
-                          boxShadow: <BoxShadow>[
-                            BoxShadow(
-                                color: Colors.blue.withOpacity(0.4),
-                                offset: const Offset(8.0, 16.0),
-                                blurRadius: 16.0),
-                          ],
-                        ),
-                        child: Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            splashColor: Colors.white.withOpacity(0.1),
-                            highlightColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            onTap: () {},
-                            child: Icon(
-                              Icons.add,
-                              color: Colors.white,
-                              size: 32,
-                            ),
-                          ),
-                        ),
+                height: 80,
+                color: Colors.white,
+                child: Row(
+                  children: <Widget>[
+                    const Expanded(
+                      child: Icon(
+                        Icons.home_filled,
+                        size: 30,
+                        color: Colors.blue,
                       ),
                     ),
-                  ),
+                    const Expanded(
+                      child: Icon(
+                        Icons.compass_calibration,
+                        size: 30,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 64.0,
+                    ),
+                    const Expanded(
+                      child: Icon(
+                        Icons.mail,
+                        color: Colors.grey,
+                        size: 30,
+                      ),
+                    ),
+                    const Expanded(
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.grey,
+                        size: 30,
+                      ),
+                    ),
+                  ],
                 ),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 40,
+            child: Container(
+              width: 65,
+              height: 65,
+              decoration: const BoxDecoration(
+                color: Colors.blue,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 32,
               ),
             ),
           ),
@@ -153,7 +85,7 @@ class _BottomBarViewState extends State<BottomBarView>
 }
 
 class TabClipper extends CustomClipper<Path> {
-  TabClipper({this.radius = 38.0});
+  TabClipper({this.radius = 55.0});
 
   final double radius;
 
@@ -161,7 +93,7 @@ class TabClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     final Path path = Path();
 
-    final double v = radius * 2;
+    final double v = radius * 1.9;
     path.lineTo(0, 0);
     path.arcTo(Rect.fromLTWH(0, 0, radius, radius), degreeToRadians(180),
         degreeToRadians(90), false);
@@ -173,7 +105,7 @@ class TabClipper extends CustomClipper<Path> {
         false);
 
     path.arcTo(Rect.fromLTWH((size.width / 2) - v / 2, -v / 2, v, v),
-        degreeToRadians(160), degreeToRadians(-140), false);
+        degreeToRadians(160), degreeToRadians(-120), false);
 
     path.arcTo(
         Rect.fromLTWH((size.width - ((size.width / 2) - v / 2)) - v * 0.04, 0,
