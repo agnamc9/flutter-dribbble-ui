@@ -13,6 +13,13 @@ class $AssetsECommerceGen {
   $AssetsECommerceImagesGen get images => const $AssetsECommerceImagesGen();
 }
 
+class $AssetsFoodDeliveryGen {
+  const $AssetsFoodDeliveryGen();
+
+  $AssetsFoodDeliveryImagesGen get images =>
+      const $AssetsFoodDeliveryImagesGen();
+}
+
 class $AssetsPetAdoptionGen {
   const $AssetsPetAdoptionGen();
 
@@ -67,6 +74,30 @@ class $AssetsECommerceImagesGen {
       const AssetGenImage('assets/e_commerce/images/p2_item_header_2.jpg');
 }
 
+class $AssetsFoodDeliveryImagesGen {
+  const $AssetsFoodDeliveryImagesGen();
+
+  /// File path: assets/food_delivery/images/avatar.png
+  AssetGenImage get avatar =>
+      const AssetGenImage('assets/food_delivery/images/avatar.png');
+
+  /// File path: assets/food_delivery/images/brocheta.jpg
+  AssetGenImage get brocheta =>
+      const AssetGenImage('assets/food_delivery/images/brocheta.jpg');
+
+  /// File path: assets/food_delivery/images/burger.jpg
+  AssetGenImage get burger =>
+      const AssetGenImage('assets/food_delivery/images/burger.jpg');
+
+  /// File path: assets/food_delivery/images/pizza.jpg
+  AssetGenImage get pizza =>
+      const AssetGenImage('assets/food_delivery/images/pizza.jpg');
+
+  /// File path: assets/food_delivery/images/sandwich.jpg
+  AssetGenImage get sandwich =>
+      const AssetGenImage('assets/food_delivery/images/sandwich.jpg');
+}
+
 class $AssetsPetAdoptionImagesGen {
   const $AssetsPetAdoptionImagesGen();
 
@@ -95,6 +126,7 @@ class Assets {
   Assets._();
 
   static const $AssetsECommerceGen eCommerce = $AssetsECommerceGen();
+  static const $AssetsFoodDeliveryGen foodDelivery = $AssetsFoodDeliveryGen();
   static const $AssetsPetAdoptionGen petAdoption = $AssetsPetAdoptionGen();
 }
 
