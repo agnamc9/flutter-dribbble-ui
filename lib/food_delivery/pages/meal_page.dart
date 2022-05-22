@@ -1,11 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dribbble_ui/food_delivery/food_delivery.dart';
+import 'package:flutter_dribbble_ui/main.dart';
 
-class MealPage extends StatelessWidget {
-  const MealPage({Key? key}) : super(key: key);
+class MealPage extends StatefulWidget {
+  final int position;
+
+  const MealPage({
+    Key? key,
+    required this.position,
+  }) : super(key: key);
+
+  @override
+  State<MealPage> createState() => _MealPageState();
+}
+
+class _MealPageState extends State<MealPage> {
+  int categoryIndex = 0;
+  bool favorite = false;
+  int quantity = 0;
 
   @override
   Widget build(BuildContext context) {
+    List<String> sizes = [
+      "CH",
+      "MD",
+      "GD",
+      "FM",
+    ];
     final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
@@ -33,11 +54,14 @@ class MealPage extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    width: 120,
-                    height: 120,
-                    decoration: const BoxDecoration(
+                    width: 150,
+                    height: 150,
+                    decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.blue,
+                      image: DecorationImage(
+                        image: mealImages[widget.position],
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -48,19 +72,28 @@ class MealPage extends StatelessWidget {
                       color: red,
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(12),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Icon(
-                          Icons.remove,
-                          color: Colors.white,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            if (quantity - 1 > 0) {
+                              setState(() {
+                                quantity--;
+                              });
+                            }
+                          },
+                          child: const Icon(
+                            Icons.remove,
+                            color: Colors.white,
+                          ),
                         ),
                         SizedBox(
                           width: 20,
                         ),
                         Text(
-                          '02',
+                          displayQuantity(quantity),
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 24,
@@ -70,9 +103,18 @@ class MealPage extends StatelessWidget {
                         SizedBox(
                           width: 20,
                         ),
-                        Icon(
-                          Icons.add,
-                          color: Colors.white,
+                        InkWell(
+                          onTap: () {
+                            if (quantity + 1 < 11) {
+                              setState(() {
+                                quantity++;
+                              });
+                            }
+                          },
+                          child: Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
                         ),
                       ],
                     ),
@@ -83,22 +125,31 @@ class MealPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        'Pizza Cantos',
-                        style: TextStyle(
+                      Text(
+                        mealNames[widget.position],
+                        style: const TextStyle(
                           fontWeight: FontWeight.w900,
                           fontSize: 26,
                         ),
                       ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: red,
-                          shape: BoxShape.circle,
-                        ),
-                        padding: const EdgeInsets.all(8),
-                        child: const Icon(
-                          Icons.favorite_outline,
-                          color: Colors.white,
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            favorite = !favorite;
+                          });
+                        },
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 500),
+                          decoration: BoxDecoration(
+                            color: favorite ? red : Colors.white,
+                            shape: BoxShape.circle,
+                            border: favorite ? null : Border.all(color: red),
+                          ),
+                          padding: const EdgeInsets.all(8),
+                          child: Icon(
+                            Icons.favorite_outline,
+                            color: favorite ? Colors.white : red,
+                          ),
                         ),
                       )
                     ],
@@ -109,7 +160,7 @@ class MealPage extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      '\$140.00',
+                      '\$50.00',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 24,
@@ -159,28 +210,38 @@ class MealPage extends StatelessWidget {
                   SizedBox(
                     height: 60,
                     child: ListView.builder(
-                        itemCount: 4,
+                        itemCount: sizes.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          bool selected = index == 0;
-                          return Container(
-                            width: 70,
-                            margin: const EdgeInsets.only(right: 18),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.grey.shade300,
-                                width: 1.5,
+                          bool selected = index == categoryIndex;
+                          return InkWell(
+                            onTap: () {
+                              if (categoryIndex != index) {
+                                setState(() {
+                                  categoryIndex = index;
+                                });
+                              }
+                            },
+                            child: AnimatedContainer(
+                              duration: Duration(milliseconds: 500),
+                              width: 70,
+                              margin: const EdgeInsets.only(right: 18),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.grey.shade300,
+                                  width: 1.5,
+                                ),
+                                color: selected ? red : Colors.white,
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                              color: selected ? red : Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            padding: EdgeInsets.all(8),
-                            alignment: Alignment.center,
-                            child: Text(
-                              'XL',
-                              style: TextStyle(
-                                color: selected ? Colors.white : Colors.black,
-                                fontSize: 16,
+                              padding: const EdgeInsets.all(8),
+                              alignment: Alignment.center,
+                              child: Text(
+                                sizes[index],
+                                style: TextStyle(
+                                  color: selected ? Colors.white : Colors.black,
+                                  fontSize: 16,
+                                ),
                               ),
                             ),
                           );
@@ -210,5 +271,9 @@ class MealPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String displayQuantity(int quantity) {
+    return quantity < 10 ? '0$quantity' : '$quantity';
   }
 }

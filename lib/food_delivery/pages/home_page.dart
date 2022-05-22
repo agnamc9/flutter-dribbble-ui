@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dribbble_ui/food_delivery/food_delivery.dart';
 import 'package:flutter_dribbble_ui/gen/assets.gen.dart';
+
+import '../../main.dart';
 
 const Color red = Color.fromRGBO(233, 107, 104, 1);
 
@@ -12,26 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<AssetGenImage> mealImages = [
-    Assets.foodDelivery.images.pizza,
-    Assets.foodDelivery.images.burger,
-    Assets.foodDelivery.images.sandwich,
-    Assets.foodDelivery.images.brocheta,
-  ];
-
-  List<String> mealNames = [
-    "Pizza veloper",
-    "Burger miau",
-  ];
-
-  List<String> categories = [
-    "Pizzas",
-    "Burger",
-    "Sandwich",
-    "Desayuno",
-  ];
-
-  int selectedMeal = 0;
+  int selectedCategory = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -179,13 +163,13 @@ class _HomePageState extends State<HomePage> {
                             itemCount: categories.length,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
-                              bool selected = selectedMeal == index;
+                              bool selected = selectedCategory == index;
                               return InkWell(
                                 splashColor: Colors.transparent,
                                 onTap: () {
-                                  if (selectedMeal != index) {
+                                  if (selectedCategory != index) {
                                     setState(() {
-                                      selectedMeal = index;
+                                      selectedCategory = index;
                                     });
                                   }
                                 },
@@ -270,111 +254,122 @@ class _HomePageState extends State<HomePage> {
                           itemCount: 2,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return Container(
-                              margin: const EdgeInsets.only(right: 18),
-                              width: 200,
-                              child: Stack(
-                                fit: StackFit.expand,
-                                children: [
-                                  Positioned(
-                                    top: 28,
-                                    left: 0,
-                                    right: 0,
-                                    bottom: 0,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Colors.grey.shade300,
-                                          width: 1.5,
-                                        ),
-                                        color: Colors.grey.shade200,
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      padding: const EdgeInsets.all(8),
-                                    ),
-                                  ),
-                                  Column(
-                                    children: [
-                                      Container(
-                                        width: 100,
-                                        height: 100,
+                            return InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (c) =>
+                                          MealPage(position: index)),
+                                );
+                              },
+                              child: Container(
+                                margin: const EdgeInsets.only(right: 18),
+                                width: 200,
+                                child: Stack(
+                                  fit: StackFit.expand,
+                                  children: [
+                                    Positioned(
+                                      top: 28,
+                                      left: 0,
+                                      right: 0,
+                                      bottom: 0,
+                                      child: Container(
                                         decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          image: DecorationImage(
-                                            image: mealImages[index],
-                                            fit: BoxFit.cover,
+                                          border: Border.all(
+                                            color: Colors.grey.shade300,
+                                            width: 1.5,
+                                          ),
+                                          color: Colors.grey.shade200,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        padding: const EdgeInsets.all(8),
+                                      ),
+                                    ),
+                                    Column(
+                                      children: [
+                                        Container(
+                                          width: 100,
+                                          height: 100,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            image: DecorationImage(
+                                              image: mealImages[index],
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(
-                                        mealNames[index],
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18,
+                                        const SizedBox(
+                                          height: 10,
                                         ),
-                                      ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
-                                      const Text(
-                                        'Lorem ipsum dolor Lorem ipsum dolor. Lorem ipsum\ndolor Lorem ipsum dolor ',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 13,
-                                          color: Colors.grey,
+                                        Text(
+                                          mealNames[index],
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18,
+                                          ),
                                         ),
-                                        textAlign: TextAlign.center,
-                                        maxLines: 2,
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(10),
+                                        const SizedBox(
+                                          height: 5,
                                         ),
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 24,
-                                          vertical: 10,
-                                        ),
-                                        child: const Text(
-                                          "\$50,00",
+                                        const Text(
+                                          'Lorem ipsum dolor Lorem ipsum dolor. Lorem ipsum\ndolor Lorem ipsum dolor ',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 16,
+                                            fontSize: 13,
+                                            color: Colors.grey,
                                           ),
+                                          textAlign: TextAlign.center,
+                                          maxLines: 2,
                                         ),
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      RichText(
-                                        text: const TextSpan(
-                                          style: TextStyle(
-                                            color: red,
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
                                           ),
-                                          children: [
-                                            TextSpan(
-                                              text: "Antes ",
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 24,
+                                            vertical: 10,
+                                          ),
+                                          child: const Text(
+                                            "\$50,00",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16,
                                             ),
-                                            TextSpan(
-                                              text: "\$75,00",
-                                              style: TextStyle(
-                                                decoration:
-                                                    TextDecoration.lineThrough,
-                                              ),
-                                            )
-                                          ],
+                                          ),
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                ],
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        RichText(
+                                          text: const TextSpan(
+                                            style: TextStyle(
+                                              color: red,
+                                            ),
+                                            children: [
+                                              TextSpan(
+                                                text: "Antes ",
+                                              ),
+                                              TextSpan(
+                                                text: "\$75,00",
+                                                style: TextStyle(
+                                                  decoration: TextDecoration
+                                                      .lineThrough,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           },
