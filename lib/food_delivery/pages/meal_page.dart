@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dribbble_ui/food_delivery/food_delivery.dart';
 import 'package:flutter_dribbble_ui/main.dart';
 
+import '../../main.dart';
+
 class MealPage extends StatefulWidget {
   final int position;
 
