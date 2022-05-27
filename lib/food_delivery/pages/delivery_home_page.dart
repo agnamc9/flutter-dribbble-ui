@@ -3,18 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dribbble_ui/food_delivery/food_delivery.dart';
 import 'package:flutter_dribbble_ui/gen/assets.gen.dart';
 
-import '../../main.dart';
-
-const Color red = Color.fromRGBO(233, 107, 104, 1);
-
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class DeliveryHomePage extends StatefulWidget {
+  const DeliveryHomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<DeliveryHomePage> createState() => _DeliveryHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _DeliveryHomePageState extends State<DeliveryHomePage> {
   int selectedCategory = 0;
 
   @override
