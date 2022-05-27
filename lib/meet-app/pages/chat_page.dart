@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dribbble_ui/gen/assets.gen.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -13,11 +14,11 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       backgroundColor: Color.fromRGBO(252, 249, 250, 1),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Row(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
                 children: [
                   const Icon(
                     Icons.arrow_back_ios_new,
@@ -38,7 +39,7 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                   const Icon(
                     Icons.call,
-                    color: Colors.grey,
+                    color: Colors.black,
                   ),
                   const SizedBox(width: 10),
                   const Icon(
@@ -47,17 +48,16 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 10),
-              const Divider(
-                color: Colors.grey,
-              ),
-              const SizedBox(height: 10),
-              Expanded(
-                child: Container(),
-              ),
-              const SizedBox(height: 10),
-            ],
-          ),
+            ),
+            const Divider(
+              color: Colors.grey,
+            ),
+            const SizedBox(height: 10),
+            Expanded(
+              child: Container(),
+            ),
+            const SizedBox(height: 10),
+          ],
         ),
       ),
     );

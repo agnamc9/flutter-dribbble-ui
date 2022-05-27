@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dribbble_ui/gen/assets.gen.dart';
 
+import '../data/data.dart';
+
 class SectionPage extends StatefulWidget {
   const SectionPage({Key? key}) : super(key: key);
 
@@ -9,30 +11,6 @@ class SectionPage extends StatefulWidget {
 }
 
 class _SectionPageState extends State<SectionPage> {
-  List<AssetGenImage> headerItems = [
-    Assets.eCommerce.images.p2ItemHeader1,
-    Assets.eCommerce.images.p2ItemHeader2,
-  ];
-
-  List<AssetGenImage> items = [
-    Assets.eCommerce.images.p1Item1,
-    Assets.eCommerce.images.p1Item2,
-    Assets.eCommerce.images.p1Item3,
-  ];
-
-  List<String> itemNames = [
-    "Ipad pro 2015",
-    "Smart TV 32''",
-    "Keyboard",
-  ];
-
-  List<String> categories = [
-    "Clothing",
-    "Gadget",
-    "Gaming",
-    "Fashion",
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -327,7 +305,7 @@ class _SectionPageState extends State<SectionPage> {
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
-                                    children: [
+                                    children: const [
                                       Text(
                                         'Price',
                                         style: TextStyle(

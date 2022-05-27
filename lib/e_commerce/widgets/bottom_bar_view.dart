@@ -23,15 +23,15 @@ class _BottomBarViewState extends State<BottomBarView> {
                 height: 80,
                 color: Colors.white,
                 child: Row(
-                  children: <Widget>[
-                    const Expanded(
+                  children: const <Widget>[
+                    Expanded(
                       child: Icon(
                         Icons.home_filled,
                         size: 30,
                         color: Colors.blue,
                       ),
                     ),
-                    const Expanded(
+                    Expanded(
                       child: Icon(
                         Icons.compass_calibration,
                         size: 30,
@@ -41,14 +41,14 @@ class _BottomBarViewState extends State<BottomBarView> {
                     SizedBox(
                       width: 64.0,
                     ),
-                    const Expanded(
+                    Expanded(
                       child: Icon(
                         Icons.mail,
                         color: Colors.grey,
                         size: 30,
                       ),
                     ),
-                    const Expanded(
+                    Expanded(
                       child: Icon(
                         Icons.person,
                         color: Colors.grey,
@@ -71,7 +71,7 @@ class _BottomBarViewState extends State<BottomBarView> {
                 color: Colors.blue,
                 shape: BoxShape.circle,
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.add,
                 color: Colors.white,
                 size: 32,

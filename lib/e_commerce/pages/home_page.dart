@@ -12,46 +12,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<AssetGenImage> headerItems = [
-    Assets.eCommerce.images.p1ItemHeader1,
-    Assets.eCommerce.images.p1ItemHeader2,
-  ];
-
-  List<AssetGenImage> items = [
-    Assets.eCommerce.images.p1Item1,
-    Assets.eCommerce.images.p1Item2,
-    Assets.eCommerce.images.p1Item3,
-  ];
-
-  List<String> itemNames = [
-    "Ipad pro 2015",
-    "Smart TV 32''",
-    "Keyboard",
-  ];
-
-  List<String> categories = [
-    "Clothing",
-    "Gadget",
-    "Gaming",
-    "Fashion",
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromRGBO(250, 250, 250, 1),
-              Color.fromRGBO(245, 245, 245, 1),
-              Color.fromRGBO(240, 240, 240, 1),
-              Color.fromRGBO(235, 235, 235, 1),
-            ],
-          )),
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color.fromRGBO(250, 250, 250, 1),
+                Color.fromRGBO(245, 245, 245, 1),
+                Color.fromRGBO(240, 240, 240, 1),
+                Color.fromRGBO(235, 235, 235, 1),
+              ],
+            ),
+          ),
           child: Stack(
             fit: StackFit.expand,
             children: [
@@ -72,7 +49,8 @@ class _HomePageState extends State<HomePage> {
                                     width: 26,
                                     height: 4,
                                     decoration: BoxDecoration(
-                                      color: Color.fromRGBO(35, 51, 80, 1),
+                                      color:
+                                          const Color.fromRGBO(35, 51, 80, 1),
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                   ),
@@ -82,14 +60,15 @@ class _HomePageState extends State<HomePage> {
                                     height: 4,
                                     decoration: BoxDecoration(
                                       //color: Colors.blue,
-                                      color: Color.fromRGBO(123, 146, 185, 1),
+                                      color: const Color.fromRGBO(
+                                          123, 146, 185, 1),
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                   ),
                                 ],
                               ),
-                              SizedBox(width: 20),
-                              Expanded(
+                              const SizedBox(width: 20),
+                              const Expanded(
                                 child: Text(
                                   'Toqo',
                                   style: TextStyle(
@@ -100,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               Stack(
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.notifications_none,
                                     size: 30,
                                   ),
@@ -110,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                                     child: Container(
                                       width: 8,
                                       height: 8,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Colors.red,
                                         shape: BoxShape.circle,
                                       ),
@@ -161,56 +140,66 @@ class _HomePageState extends State<HomePage> {
                               itemCount: headerItems.length,
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
-                                return Container(
-                                  width: 300,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: headerItems[index],
-                                      fit: BoxFit.cover,
+                                return InkWell(
+                                  onTap: () => Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (c) => const SectionPage(),
                                     ),
-                                    borderRadius: BorderRadius.circular(10),
                                   ),
-                                  margin: const EdgeInsets.only(
-                                    right: 16,
-                                  ),
-                                  alignment: Alignment.bottomCenter,
-                                  padding: const EdgeInsets.all(16),
-                                  child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Expanded(
-                                        child: index % 2 == 0
-                                            ? Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: const [
-                                                  Text(
-                                                    'Discount',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: 16),
-                                                  ),
-                                                  SizedBox(height: 10),
-                                                  Text(
-                                                    '70%',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 36,
-                                                      fontWeight:
-                                                          FontWeight.bold,
+                                  child: Container(
+                                    width: 300,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: headerItems[index],
+                                        fit: BoxFit.cover,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    margin: const EdgeInsets.only(
+                                      right: 16,
+                                    ),
+                                    alignment: Alignment.bottomCenter,
+                                    padding: const EdgeInsets.all(16),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Expanded(
+                                          child: index % 2 == 0
+                                              ? Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: const [
+                                                    Text(
+                                                      'Discount',
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 16),
                                                     ),
-                                                  ),
-                                                ],
-                                              )
-                                            : Container(),
-                                      ),
-                                      const Text(
-                                        '#Gadgetdays',
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 16),
-                                      ),
-                                    ],
+                                                    SizedBox(height: 10),
+                                                    Text(
+                                                      '70%',
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 36,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )
+                                              : Container(),
+                                        ),
+                                        const Text(
+                                          '#Gadgetdays',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 );
                               },
@@ -252,17 +241,17 @@ class _HomePageState extends State<HomePage> {
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text(
+                              const Text(
                                 'Live Discount',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
                                 ),
                               ),
-                              SizedBox(width: 5),
+                              const SizedBox(width: 5),
                               Assets.eCommerce.images.flame.image(width: 30),
-                              Spacer(),
-                              Text(
+                              const Spacer(),
+                              const Text(
                                 'View All',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -400,7 +389,7 @@ class _HomePageState extends State<HomePage> {
                               },
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 100,
                           )
                         ],
