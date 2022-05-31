@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dribbble_ui/e_commerce/e_commerce.dart';
 import 'package:flutter_dribbble_ui/food_delivery/food_delivery.dart';
+import 'package:flutter_dribbble_ui/meet-app/meet-app.dart';
 import 'package:flutter_dribbble_ui/pet_adoption/pet_adoption.dart';
 
 void main() {
@@ -9,9 +10,22 @@ void main() {
 
 class MyApp extends StatelessWidget {
   final List<AppItem> apps = [
-    AppItem(name: "Pet App", page: const PetsPage()),
-    AppItem(name: "E-Commerce App", page: const IntroPage()),
-    AppItem(name: "Delivery App", page: const DeliveryHomePage()),
+    AppItem(
+      name: "Pet App",
+      page: const PetsPage(),
+    ),
+    AppItem(
+      name: "E-Commerce App",
+      page: const IntroPage(),
+    ),
+    AppItem(
+      name: "Delivery App",
+      page: const DeliveryHomePage(),
+    ),
+    AppItem(
+      name: "Meet App",
+      page: const ChatLoginPage(),
+    ),
   ];
 
   @override

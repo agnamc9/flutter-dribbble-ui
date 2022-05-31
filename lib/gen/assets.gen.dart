@@ -20,6 +20,12 @@ class $AssetsFoodDeliveryGen {
       const $AssetsFoodDeliveryImagesGen();
 }
 
+class $AssetsMeetAppGen {
+  const $AssetsMeetAppGen();
+
+  $AssetsMeetAppImagesGen get images => const $AssetsMeetAppImagesGen();
+}
+
 class $AssetsPetAdoptionGen {
   const $AssetsPetAdoptionGen();
 
@@ -98,6 +104,42 @@ class $AssetsFoodDeliveryImagesGen {
       const AssetGenImage('assets/food_delivery/images/sandwich.jpg');
 }
 
+class $AssetsMeetAppImagesGen {
+  const $AssetsMeetAppImagesGen();
+
+  /// File path: assets/meet_app/images/apple.php.png
+  AssetGenImage get applePhp =>
+      const AssetGenImage('assets/meet_app/images/apple.php.png');
+
+  /// File path: assets/meet_app/images/avatar.jpg
+  AssetGenImage get avatar =>
+      const AssetGenImage('assets/meet_app/images/avatar.jpg');
+
+  /// File path: assets/meet_app/images/avatar2.jpg
+  AssetGenImage get avatar2 =>
+      const AssetGenImage('assets/meet_app/images/avatar2.jpg');
+
+  /// File path: assets/meet_app/images/avatar3.jpg
+  AssetGenImage get avatar3 =>
+      const AssetGenImage('assets/meet_app/images/avatar3.jpg');
+
+  /// File path: assets/meet_app/images/avatar4.jpg
+  AssetGenImage get avatar4 =>
+      const AssetGenImage('assets/meet_app/images/avatar4.jpg');
+
+  /// File path: assets/meet_app/images/avatar5.jpg
+  AssetGenImage get avatar5 =>
+      const AssetGenImage('assets/meet_app/images/avatar5.jpg');
+
+  /// File path: assets/meet_app/images/facebook.svg.png
+  AssetGenImage get facebookSvg =>
+      const AssetGenImage('assets/meet_app/images/facebook.svg.png');
+
+  /// File path: assets/meet_app/images/google.svg.png
+  AssetGenImage get googleSvg =>
+      const AssetGenImage('assets/meet_app/images/google.svg.png');
+}
+
 class $AssetsPetAdoptionImagesGen {
   const $AssetsPetAdoptionImagesGen();
 
@@ -127,6 +169,7 @@ class Assets {
 
   static const $AssetsECommerceGen eCommerce = $AssetsECommerceGen();
   static const $AssetsFoodDeliveryGen foodDelivery = $AssetsFoodDeliveryGen();
+  static const $AssetsMeetAppGen meetApp = $AssetsMeetAppGen();
   static const $AssetsPetAdoptionGen petAdoption = $AssetsPetAdoptionGen();
 }
 
