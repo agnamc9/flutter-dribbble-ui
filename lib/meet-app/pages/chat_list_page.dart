@@ -33,6 +33,26 @@ class _ChatListPageState extends State<ChatListPage> {
         status: UserStatus.offline,
         newMessage: 2,
       ),
+      ChatList(
+        time: '9min',
+        newMessage: 2,
+      ),
+      ChatList(
+        time: '2.47pm',
+        status: UserStatus.busy,
+      ),
+      ChatList(
+        time: '35min',
+      ),
+      ChatList(
+        time: '6.20pm',
+        status: UserStatus.busy,
+      ),
+      ChatList(
+        time: '4.35pm',
+        status: UserStatus.offline,
+        newMessage: 2,
+      ),
     ];
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
@@ -121,7 +141,12 @@ class _ChatListPageState extends State<ChatListPage> {
                           itemCount: chats.length,
                           itemBuilder: (context, index) {
                             var chatList = chats[index];
-                            return ChatListItem(chatList: chatList);
+                            return InkWell(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => ChatPage()));
+                                },
+                                child: ChatListItem(chatList: chatList));
                           }),
                     )
                   ],
@@ -137,20 +162,36 @@ class _ChatListPageState extends State<ChatListPage> {
                 children: [
                   Column(
                     children: [
-                      Icon(Icons.home_filled),
-                      SizedBox(
-                        height: 10,
+                      Icon(
+                        Icons.home_filled,
+                        size: 30,
                       ),
-                      Text('Home')
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'Home',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      )
                     ],
                   ),
                   Column(
                     children: [
-                      Icon(Icons.home_filled),
-                      SizedBox(
-                        height: 10,
+                      Icon(
+                        Icons.people_alt_outlined,
+                        size: 30,
                       ),
-                      Text('Contact')
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'Contact',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      )
                     ],
                   ),
                   Column(
@@ -158,14 +199,16 @@ class _ChatListPageState extends State<ChatListPage> {
                       Icon(
                         Icons.message,
                         color: Colors.red.shade400,
+                        size: 30,
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 5,
                       ),
                       Text(
                         'Chat',
                         style: TextStyle(
                           color: Colors.red.shade400,
+                          fontSize: 20,
                         ),
                       )
                     ],

@@ -12,6 +12,33 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
+    List<ChatMessage> messages = [
+      ChatMessage(
+        time: '16:04',
+      ),
+      ChatMessage(
+        time: '16:05',
+        sender: true,
+      ),
+      ChatMessage(
+        time: '16:06',
+      ),
+      ChatMessage(
+        time: '16:07',
+      ),
+      ChatMessage(
+        time: '16:11',
+        image: true,
+        sender: true,
+      ),
+      ChatMessage(
+        time: '16:12',
+      ),
+      ChatMessage(
+        time: '16:14',
+        sender: true,
+      ),
+    ];
     return Scaffold(
       backgroundColor: const Color.fromRGBO(252, 249, 250, 1),
       body: SafeArea(
@@ -52,7 +79,12 @@ class _ChatPageState extends State<ChatPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
-                        Text('Natalie Sarah'),
+                        Text(
+                          'Natalie Sarah',
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
                         SizedBox(height: 5),
                         Text('Online'),
                       ],
@@ -73,10 +105,9 @@ class _ChatPageState extends State<ChatPage> {
             const Divider(
               color: Colors.grey,
             ),
-            const SizedBox(height: 10),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
                     Expanded(

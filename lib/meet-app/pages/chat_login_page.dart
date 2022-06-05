@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dribbble_ui/gen/assets.gen.dart';
+import 'package:flutter_dribbble_ui/meet-app/meet-app.dart';
 import 'dart:math' as math;
 import 'package:vector_math/vector_math.dart' as vm;
 
@@ -154,6 +155,7 @@ class _ChatLoginPageState extends State<ChatLoginPage>
                               border: InputBorder.none,
                               isDense: true,
                             ),
+                            obscureText: true,
                           ),
                         ),
                         Icon(
@@ -170,19 +172,25 @@ class _ChatLoginPageState extends State<ChatLoginPage>
                     textAlign: TextAlign.right,
                   ),
                   const SizedBox(height: 20),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.red.shade300,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: const EdgeInsets.all(16),
-                    child: const Text(
-                      'Sign in',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: ((context) => ChatListPage())));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.red.shade300,
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      textAlign: TextAlign.center,
+                      padding: const EdgeInsets.all(16),
+                      child: const Text(
+                        'Sign in',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
