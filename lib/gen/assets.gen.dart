@@ -26,6 +26,12 @@ class $AssetsMeetAppGen {
   $AssetsMeetAppImagesGen get images => const $AssetsMeetAppImagesGen();
 }
 
+class $AssetsMusicUiGen {
+  const $AssetsMusicUiGen();
+
+  $AssetsMusicUiImagesGen get images => const $AssetsMusicUiImagesGen();
+}
+
 class $AssetsPetAdoptionGen {
   const $AssetsPetAdoptionGen();
 
@@ -140,6 +146,70 @@ class $AssetsMeetAppImagesGen {
       const AssetGenImage('assets/meet_app/images/google.svg.png');
 }
 
+class $AssetsMusicUiImagesGen {
+  const $AssetsMusicUiImagesGen();
+
+  /// File path: assets/music_ui/images/baazi.jpeg
+  AssetGenImage get baazi =>
+      const AssetGenImage('assets/music_ui/images/baazi.jpeg');
+
+  /// File path: assets/music_ui/images/behnam-bani.jpg
+  AssetGenImage get behnamBani =>
+      const AssetGenImage('assets/music_ui/images/behnam-bani.jpg');
+
+  /// File path: assets/music_ui/images/daram-miram.jpeg
+  AssetGenImage get daramMiram =>
+      const AssetGenImage('assets/music_ui/images/daram-miram.jpeg');
+
+  /// File path: assets/music_ui/images/hale.jpg
+  AssetGenImage get hale =>
+      const AssetGenImage('assets/music_ui/images/hale.jpg');
+
+  /// File path: assets/music_ui/images/karikardi.jpg
+  AssetGenImage get karikardi =>
+      const AssetGenImage('assets/music_ui/images/karikardi.jpg');
+
+  /// File path: assets/music_ui/images/parpar.png
+  AssetGenImage get parpar =>
+      const AssetGenImage('assets/music_ui/images/parpar.png');
+
+  /// File path: assets/music_ui/images/playlist1.webp
+  AssetGenImage get playlist1 =>
+      const AssetGenImage('assets/music_ui/images/playlist1.webp');
+
+  /// File path: assets/music_ui/images/playlist2.png.webp
+  AssetGenImage get playlist2Png =>
+      const AssetGenImage('assets/music_ui/images/playlist2.png.webp');
+
+  /// File path: assets/music_ui/images/playlist3.jpg
+  AssetGenImage get playlist3 =>
+      const AssetGenImage('assets/music_ui/images/playlist3.jpg');
+
+  /// File path: assets/music_ui/images/reza-sadeghi.jpg
+  AssetGenImage get rezaSadeghi =>
+      const AssetGenImage('assets/music_ui/images/reza-sadeghi.jpg');
+
+  /// File path: assets/music_ui/images/sareen.jpg
+  AssetGenImage get sareen =>
+      const AssetGenImage('assets/music_ui/images/sareen.jpg');
+
+  /// File path: assets/music_ui/images/sareen2.jpeg
+  AssetGenImage get sareen2 =>
+      const AssetGenImage('assets/music_ui/images/sareen2.jpeg');
+
+  /// File path: assets/music_ui/images/sasy.jpg
+  AssetGenImage get sasy =>
+      const AssetGenImage('assets/music_ui/images/sasy.jpg');
+
+  /// File path: assets/music_ui/images/sijal.jpeg
+  AssetGenImage get sijal =>
+      const AssetGenImage('assets/music_ui/images/sijal.jpeg');
+
+  /// File path: assets/music_ui/images/vabastegi.jpeg
+  AssetGenImage get vabastegi =>
+      const AssetGenImage('assets/music_ui/images/vabastegi.jpeg');
+}
+
 class $AssetsPetAdoptionImagesGen {
   const $AssetsPetAdoptionImagesGen();
 
@@ -170,6 +240,7 @@ class Assets {
   static const $AssetsECommerceGen eCommerce = $AssetsECommerceGen();
   static const $AssetsFoodDeliveryGen foodDelivery = $AssetsFoodDeliveryGen();
   static const $AssetsMeetAppGen meetApp = $AssetsMeetAppGen();
+  static const $AssetsMusicUiGen musicUi = $AssetsMusicUiGen();
   static const $AssetsPetAdoptionGen petAdoption = $AssetsPetAdoptionGen();
 }
 

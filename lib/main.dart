@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dribbble_ui/e_commerce/e_commerce.dart';
 import 'package:flutter_dribbble_ui/food_delivery/food_delivery.dart';
 import 'package:flutter_dribbble_ui/meet-app/meet-app.dart';
+import 'package:flutter_dribbble_ui/music_ui/music_ui.dart';
 import 'package:flutter_dribbble_ui/pet_adoption/pet_adoption.dart';
 
 void main() {
@@ -25,6 +26,10 @@ class MyApp extends StatelessWidget {
     AppItem(
       name: "Meet App",
       page: const ChatLoginPage(),
+    ),
+    AppItem(
+      name: "Music App",
+      page: const MusicHomePage(),
     ),
   ];
 
